@@ -7,11 +7,7 @@ const router = express.Router();
 
 router.post("", (req, res, next) => {
     const incomeHeads = new IncomeHead({
-        college_name: req.body.college_name,
-        college_registration_fee: req.body.college_registration_fee,
-        student_membership_fee: req.body.student_membership_fee,
-        academic_year: req.body.academic_year,
-        financial_year: req.body.financial_year
+        income_head: req.body.income_head
     });
     incomeHeads.save();
     res.status(201).json({
