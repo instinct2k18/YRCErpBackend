@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const FinancialYear = require('./financial_year');
-const University = require('./university');
-const District = require('./district');
-
 const collegeSchema = mongoose.Schema({
     yrc_reg_no: { type: String, required: true },
     college_name: { type: String, required: true},

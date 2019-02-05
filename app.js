@@ -11,6 +11,8 @@ const districtRoutes = require('./routes/district');
 const universityRoutes = require('./routes/university');
 const collegeRoutes = require('./routes/college');
 const incomeHeadRoutes = require('./routes/income_heads');
+const voucherRoutes = require('./routes/voucher');
+const receiptRoutes = require('./routes/receipt');
 
 const app = express();
 
@@ -49,6 +51,9 @@ app.use("/api/district",districtRoutes);
 app.use("/api/university",universityRoutes);
 app.use("/api/college",collegeRoutes);
 app.use("/api/income_heads",incomeHeadRoutes);
+app.use("/api/voucher",voucherRoutes);
+app.use("/api/receipts", receiptRoutes);
 
 
 module.exports = app;
+
