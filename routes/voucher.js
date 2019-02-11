@@ -12,7 +12,10 @@ router.post("", (req, res, next) => {
         fee: req.body.fee,
         income_head: req.body.income_head,
         financial_year: req.body.financial_year,
-        academic_year: req.body.academic_year
+        academic_year: req.body.academic_year,
+        received_date: req.body.received_date,
+        bank_details: req.body.bank_details,
+        student_count: req.body.student_count
     });
     voucher.save();
     res.status(201).json({

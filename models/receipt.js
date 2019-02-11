@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const voucherSchema = mongoose.Schema({    
+const receiptSchema = mongoose.Schema({ 
+    receipt_no : { type: String, required: true},
+    receipt_enclosed_date : { type: String, required: true},
     voucher_no: { type: String, required: true},
     college_name: { type: Schema.Types.ObjectId, ref: 'College'},
     fee: { type: String, required: true},
@@ -14,4 +16,4 @@ const voucherSchema = mongoose.Schema({
     student_count: { type: String }
 });
 
-module.exports = mongoose.model('Voucher', voucherSchema);
+module.exports = mongoose.model('Receipt', receiptSchema);
