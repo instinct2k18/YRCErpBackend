@@ -16,7 +16,6 @@ router.get("", auth, (req,res, next) => {
         const collegeId = req.query.collegeId;
         Receipt.find({'college_name': collegeId, 'academic_year': {$gte: fromAcId, $lte: toAcId}, 'financial_year': {$gte: fromFnId, $lte: toFnId}})
         .then((documents) => {
-            console.log(documents);
             res.status(200).json({
                 message: 'College Collection fetched successfully',
                 collections: documents
