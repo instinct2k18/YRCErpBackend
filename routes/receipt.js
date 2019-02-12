@@ -21,7 +21,7 @@ router.get("", auth, (req,res, next) => {
             {
                 College.findOne({_id: documents.college_name})
                     .then(docs => {
-                        if (!notFirst) {
+                        if (notFirst === 'false') {
                             const receipt = new Receipt({
                                 receipt_no : recptNo,
                                 receipt_enclosed_date : recptEncDate,
@@ -35,7 +35,7 @@ router.get("", auth, (req,res, next) => {
                                 bank_details : documents.bank_details,
                                 student_count : documents.student_count
                             });
-                            //receipt.save();
+                            receipt.save();
                         }
                         res.status(201).json({
                             message: "Receipt generated successfully",
