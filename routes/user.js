@@ -11,7 +11,8 @@ router.post("/create_user", (req, res, next) => {
         .then(hash =>{
             const user = new User({
                 username: req.body.username,
-                password: hash
+                password: hash,
+                roles: req.body.roles
             });
             user.save()
                 .then(result => {
@@ -48,11 +49,12 @@ router.post("/login", (req, res, next) => {
             }
             const token = jwt.sign({ username: fetchedUser.username, userId: fetchedUser._id}, 
                 'youth-redcross-karnataka-erp-model',
-                { expiresIn: "1h"}
+                { expiresIn: "10h"}
             );
             res.status(200).json({
+                roles: fetchedUser.roles,
                 token: token,
-                expiresIn: 3600
+                expiresIn: 36000
             });
         })
         .catch(err => {

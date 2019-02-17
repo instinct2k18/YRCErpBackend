@@ -11,7 +11,8 @@ const collegeSchema = mongoose.Schema({
     email: { type: String, required: true},
     registered_financial_year: { type: Schema.Types.ObjectId, ref: 'FinancialYear'},
     affiliation: { type: Schema.Types.ObjectId, ref: 'University'},
-    district:  { type: Schema.Types.ObjectId, ref: 'District'}
+    district:  { type: Schema.Types.ObjectId, ref: 'District'},
+    old_affiliation: {type: Schema.Types.ObjectId}
 });
 
 module.exports = mongoose.model('College', collegeSchema);

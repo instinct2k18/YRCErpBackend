@@ -15,6 +15,7 @@ const voucherRoutes = require('./routes/voucher');
 const receiptRoutes = require('./routes/receipt');
 const reportRoutes = require('./routes/reports');
 const collectionRoutes = require('./routes/collection');
+const updateAffiliationRoutes = require('./routes/affiliation');
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use("/api/voucher", voucherRoutes);
 app.use("/api/receipts", receiptRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/collection", collectionRoutes);
+app.use("/api/update-affiliation", updateAffiliationRoutes);
 
 module.exports = app;
 

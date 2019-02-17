@@ -43,6 +43,7 @@ router.get("", auth, (req,res, next) => {
                                 c_name: docs.college_name,
                                 addr: docs.address,
                                 fees : documents.fee,
+                                voucher_no: documents.voucher_no,
                                 income_head : documents.income_head,
                                 received_date : documents.received_date,
                                 bank_details : documents.bank_details,

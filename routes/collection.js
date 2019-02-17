@@ -60,7 +60,9 @@ router.get("", auth, (req,res, next) => {
         let data = [];
 
         function getClgIdsUniversity(univId) {
-            return College.find({'affiliation': univId})
+            return College.find( 
+                {$or :[ {"affiliation": {$exists: true, $ne: null, $in: [univId]}}, 
+                        {"old_affiliation": {$exists: true, $ne:null, $in: [univId]}} ] })
         }
         
         function getReceiptsUniversity(dist, fromAc, toAc, fromFn, toFn) {
