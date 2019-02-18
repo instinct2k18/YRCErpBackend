@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const User = require('./models/user');
 
-mongoose.connect("mongodb://swarup:swarup@127.0.0.1:27017/yrcdb", { useNewUrlParser: true })
+mongoose.connect("mongodb://localhost:27017/yrcdb", { useNewUrlParser: true })
     .then(() => {
         console.log('Connected to database!');
     })
@@ -12,11 +12,12 @@ mongoose.connect("mongodb://swarup:swarup@127.0.0.1:27017/yrcdb", { useNewUrlPar
         console.log('Connection failed!');
     });
 
-    bcrypt.hash('admin', 10)
+    bcrypt.hash('clerk', 10)
     .then(hash =>{
         const user = new User({
-            username: 'admin',
-            password: hash
+            username: 'clerk',
+            password: hash,
+            roles: 'clerk'
         });
         user.save()
             .then(result => {

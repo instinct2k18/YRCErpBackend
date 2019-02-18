@@ -33,4 +33,17 @@ router.get("", auth, (req,res, next) => {
         });
 });
 
+router.put("/edit", auth, (req, res, next) => {
+
+});
+
+router.delete("/delete", (req, res, next) => {
+    College.findOneAndDelete(req.query.id)
+    .then(documents => {
+        res.status(200).json({
+            message: 'College deleted successfully'
+        });
+    });
+});
+
 module.exports = router;

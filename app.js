@@ -17,9 +17,9 @@ const collectionRoutes = require('./routes/collection');
 const updateAffiliationRoutes = require('./routes/affiliation');
 
 const app = express();
-app.use(express.static('./dist'));
+// app.use(express.static('./dist'));
 //db connection
-mongoose.connect("mongodb://swarup:"+ process.env.MONGO_PASSWORD +"@127.0.0.1:27017/yrcdb", { useNewUrlParser: true })
+mongoose.connect("mongodb://localhost:27017/yrcdb", { useNewUrlParser: true })
     .then(() => {
         console.log('Connected to database!');
     })
@@ -31,19 +31,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
 //cors
-//app.use(cors({origin: '*'}));
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin","*");
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-        );
-        res.setHeader(
-            "Access-Control-Allow-Methods",
-            "GET, POST, PATCH, DELETE, OPTIONS"
-        );
-    next();
-});
+app.use(cors({origin: '*'}));
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin","*");
+//     res.setHeader(
+//         "Access-Control-Allow-Headers",
+//         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//         );
+//         res.setHeader(
+//             "Access-Control-Allow-Methods",
+//             "GET, POST, PATCH, DELETE, OPTIONS"
+//         );
+//     next();
+// });
 
 //routes
 app.use("/api/user", userRoutes);
@@ -58,7 +58,7 @@ app.use("/api/receipts", receiptRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/collection", collectionRoutes);
 app.use("/api/update-affiliation", updateAffiliationRoutes);
-app.get("/*", (req, res) => res.sendfile('./dist/index.html'));
+// app.get("/*", (req, res) => res.sendfile('./dist/index.html'));
 
 module.exports = app;
 

@@ -25,4 +25,18 @@ router.get("", auth, (req,res, next) => {
         });
 });
 
+router.put("/edit", auth, (req, res, next) => {
+    
+});
+
+router.delete("/delete", (req, res, next) => {
+    District.findOneAndDelete(req.query.id)
+    .then(documents => {
+        res.status(200).json({
+            message: 'District deleted successfully'
+        });
+    });
+});
+
+
 module.exports = router;

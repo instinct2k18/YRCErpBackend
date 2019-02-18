@@ -29,4 +29,13 @@ router.get("", auth, (req, res, next) => {
         });
 });
 
+router.delete("/delete", (req, res, next) => {
+    University.findOneAndDelete(req.query.id)
+    .then(documents => {
+        res.status(200).json({
+            message: 'University deleted successfully'
+        });
+    });
+});
+
 module.exports = router;

@@ -27,4 +27,22 @@ router.get("", auth, (req, res, next) => {
         });
 });
 
+router.put("/edit", auth, (req, res, next) => {
+    AcademicYear.findByIdAndUpdate(req.body.id, { "year": req.body.year}, {new: true})
+    .then(documents => {
+        res.status(200).json({
+            message: 'Academic Year updated successfully'
+        });
+    });;
+});
+
+router.delete("/delete", (req, res, next) => {
+    AcademicYear.findOneAndDelete(req.query.id)
+    .then(documents => {
+        res.status(200).json({
+            message: 'Academic Year deleted successfully'
+        });
+    });
+});
+
 module.exports = router;

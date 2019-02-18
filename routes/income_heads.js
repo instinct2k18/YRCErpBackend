@@ -25,4 +25,13 @@ router.get("", auth, (req,res, next) => {
         })
 });
 
+router.delete("/delete", (req, res, next) => {
+    IncomeHead.findOneAndDelete(req.query.id)
+    .then(documents => {
+        res.status(200).json({
+            message: 'Income Head deleted successfully'
+        });
+    });
+});
+
 module.exports = router;

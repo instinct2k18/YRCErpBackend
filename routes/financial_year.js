@@ -25,4 +25,22 @@ router.get("", auth, (req, res, next) => {
         });
 });
 
+router.put("/edit", auth, (req, res, next) => {
+    FinancialYear.findByIdAndUpdate(req.body.id, { "year": req.body.year}, {new: true})
+    .then(documents => {
+        res.status(200).json({
+            message: 'Financial Year updated successfully'
+        });
+    });;
+});
+
+router.delete("/delete", (req, res, next) => {
+    FinancialYear.findOneAndDelete(req.query.id)
+    .then(documents => {
+        res.status(200).json({
+            message: 'Financial Year deleted successfully'
+        });
+    });
+});
+
 module.exports = router;
