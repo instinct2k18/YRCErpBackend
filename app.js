@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const userRoutes = require('./routes/user');
-
 const academicYearRoutes = require('./routes/academic_year');
 const financialYearRoutes = require('./routes/financial_year');
 const districtRoutes = require('./routes/district');
@@ -18,9 +17,9 @@ const collectionRoutes = require('./routes/collection');
 const updateAffiliationRoutes = require('./routes/affiliation');
 
 const app = express();
-
+app.use(express.static('./dist'));
 //db connection
-mongoose.connect("mongodb://swarup:swarup@127.0.0.1:27017/yrcdb", { useNewUrlParser: true })
+mongoose.connect("mongodb://swarup:"+ process.env.MONGO_PASSWORD +"@127.0.0.1:27017/yrcdb", { useNewUrlParser: true })
     .then(() => {
         console.log('Connected to database!');
     })
@@ -59,6 +58,7 @@ app.use("/api/receipts", receiptRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/collection", collectionRoutes);
 app.use("/api/update-affiliation", updateAffiliationRoutes);
+app.get("/*", (req, res) => res.sendfile('./dist/index.html'));
 
 module.exports = app;
 

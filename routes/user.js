@@ -48,7 +48,7 @@ router.post("/login", (req, res, next) => {
                 });
             }
             const token = jwt.sign({ username: fetchedUser.username, userId: fetchedUser._id}, 
-                'youth-redcross-karnataka-erp-model',
+                process.env.JWT_KEY,
                 { expiresIn: "10h"}
             );
             res.status(200).json({

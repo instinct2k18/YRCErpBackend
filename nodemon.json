@@ -1,0 +1,6 @@
+{
+    "env": {
+        "MONGO_PASSWORD": "swarup",
+        "JWT_KEY": "youth-redcross-karnataka-erp-model"
+    }
+}
