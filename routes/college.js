@@ -34,7 +34,23 @@ router.get("", auth, (req,res, next) => {
 });
 
 router.put("/edit", auth, (req, res, next) => {
-
+    console.log(req.body);
+    College.findByIdAndUpdate(req.body.id, {
+        yrc_reg_no: req.body.yrc_reg_no,
+        college_name: req.body.college_name,
+        address: req.body.address,
+        program_officer: req.body.program_officer,
+        contact_no: req.body.contact_no,
+        email: req.body.email,
+        registered_financial_year: req.body.registered_financial_year,
+        affiliation: req.body.affiliation,
+        district: req.body.district 
+    }, {new: true})
+    .then(documents => {
+        res.status(200).json({
+            message: 'College updated successfully'
+        });
+    });;
 });
 
 router.delete("/delete", (req, res, next) => {
