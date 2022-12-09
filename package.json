@@ -14,7 +14,7 @@
     "body-parser": "^1.18.3",
     "connect": "^3.6.6",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.4.0",
     "mongodb-backup": "^1.6.9",
     "mongodb-restore": "^1.6.2",
